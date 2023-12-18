@@ -12,13 +12,13 @@ traffic_volume = {"0-249": 0, "250-499": 1, "500-749": 2, "750-1000": 3, "1000+"
 
 # Define the severity of traffic based on total points
 def get_severity(points):
-    if points <= 2:
+    if points <= 4:
         return "very-low"
-    elif points <= 5:
+    elif points <= 6:
         return "low"
-    elif points <= 8:
+    elif points <= 9:
         return "medium"
-    elif points <= 11:
+    elif points <= 12:
         return "high"
     else:
         return "very-high"
@@ -26,7 +26,7 @@ def get_severity(points):
 # Generate the dataset with random noise
 with open('traffic_data.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(["Roadblock", "Time", "Weather", "Road Infrastructure", "Types of Roads", "Traffic Volume", "Severity of Traffic"])
+    writer.writerow(["roadblock", "time", "weather", "infrastructure", "type", "volume", "severity"])
     for _ in range(1000):
         incident = random.choice(list(incidents.keys()))
         time_of_day = random.choice(list(time.keys()))
